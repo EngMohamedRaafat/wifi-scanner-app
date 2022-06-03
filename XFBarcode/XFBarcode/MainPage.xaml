@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XFBarcode"
+             x:Class="XFBarcode.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="baseLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="infoLabelStyle" TargetType="Label" BasedOn="{StaticResource baseLabelStyle}">
+                <Setter Property="Grid.Column" Value="0"/>
+                <Setter Property="TextColor" Value="Gray" />
+            </Style>
+            <Style x:Key="dataLabelStyle" TargetType="Label" BasedOn="{StaticResource baseLabelStyle}">
+                <Setter Property="Grid.Column" Value="1"/>
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+            <Style x:Key="frameStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#f5f5f5" />
+                <Setter Property="HasShadow" Value="False" />
+            </Style>
+            <Style x:Key="basebuttonStyle" TargetType="Button">
+                <Setter Property="BorderRadius" Value="25"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="BorderColor" Value="#3897f0"/>
+                <Setter Property="BorderWidth" Value="1.5"/>
+            </Style>
+
+            <Style x:Key="acceptbuttonStyle" TargetType="Button" BasedOn="{StaticResource basebuttonStyle}">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#3897f0"/>
+            </Style>
+
+            <Style x:Key="cancelbuttonStyle" TargetType="Button" BasedOn="{StaticResource basebuttonStyle}">
+                <Setter Property="TextColor" Value="#3897f0"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+
+                    <!--Logo & Title frame-->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image
+                                x:Name="logo"
+                                Aspect="AspectFit"/>
+
+                            <Label HorizontalOptions="Center" VerticalOptions="Center"
+                                Text="Wi-Fi"
+                                FontAttributes="Bold" 
+                                TextColor="#696969"
+                                FontSize="35"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label 
+                                Grid.Row="0"
+                                Text="Network name"
+                                Style="{StaticResource infoLabelStyle}"/>
+                            <Label 
+                                Grid.Row="1"
+                                Text="Password"
+                                Style="{StaticResource infoLabelStyle}"/>
+                            <Label 
+                                Grid.Row="2"
+                                Text="Security"
+                                Style="{StaticResource infoLabelStyle}"/>
+
+                            <Label 
+                                Grid.Row="0"
+                                x:Name="networkName_lbl"
+                                Text="Network name"
+                                Style="{StaticResource dataLabelStyle}"/>
+                            <Label 
+                                Grid.Row="1"
+                                Text="••••••••"
+                                Style="{StaticResource dataLabelStyle}"/>
+                            <Label 
+                                Grid.Row="2"
+                                x:Name="security_lbl"
+                                Text="Security"
+                                Style="{StaticResource dataLabelStyle}"/>
+                        </Grid>
+                    </Frame>
+
+                </StackLayout>
+
+                <Frame Style="{StaticResource frameStyle}">
+
+                    <Grid VerticalOptions="EndAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Column="0" 
+                            x:Name="tryAgainBtn"
+                            Text="Try Again"
+                            Style="{StaticResource cancelbuttonStyle}"
+                                Clicked="btnScan_Clicked"/>
+                        <Button Grid.Column="1" 
+                            x:Name="connectBtn"
+                            Text="Connect WiFi"
+                            Style="{StaticResource acceptbuttonStyle}"
+                            Clicked="ConnectBtn_Clicked"/>
+                    </Grid>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>
